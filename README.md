@@ -7,17 +7,11 @@ Polis based moduluar personal assistant. Assistant supports multiple members of 
 
 Module ideas:
 
-  Interface with secure sms for i/o
-
-  Log parser for priority based alerts
-
-  Home automation integration
-
-  RSS aggregation
-
-  TorrentSync integration
-
-  Reddit aggregateion. Detect saved/suggested threads from polis members and share them with the polis.
-
-  Router integration. example, 'add MAC address' to white list.
+    Interface with secure sms for i/o
+    Log parser for priority based alerts
+    Home automation integration
+    RSS aggregation
+    TorrentSync integration
+    Reddit aggregateion. Detect saved/suggested threads from polis members and share them with the polis.
+    Router integration. example, 'add MAC address' to white list.
   
