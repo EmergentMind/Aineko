@@ -14,4 +14,6 @@ Module ideas:
     TorrentSync integration
     Reddit aggregateion. Detect saved/suggested threads from polis members and share them with the polis.
     Router integration. example, 'add MAC address' to white list.
+    Dynamic output capability so user can configure Aineko's language or 'tone'
+    Quick notes with ability to recall last note for easy throw aways
   
