@@ -13,7 +13,7 @@ Dependencies:
     <li>pycrypto</li>
 </ul>
     
-<h2>Ideas:</h1>
+<h2>Ideas:</h2>
 <ul>
     <li>Interface with secure sms for i/o</li>
     <li>Log parser for priority based alerts</li>
