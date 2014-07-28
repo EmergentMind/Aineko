@@ -8,6 +8,7 @@ Moduluar personal assistant. Assistant supports multiple users in a cluster, ind
 I/O
 -----
 **IM w/OTR**
+
 Dependencies:
 * pure-python-otr
 * pycrypto
