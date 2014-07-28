@@ -3,7 +3,7 @@ Aineko
 
 The cat.
 
-Polis based moduluar personal assistant. Assistant supports multiple members of the same polis, independently or as a community.
+Moduluar personal assistant. Assistant supports multiple users in a cluster, independently or as a community.
 
 Module ideas:
 
@@ -12,7 +12,7 @@ Module ideas:
     Home automation integration
     RSS aggregation
     TorrentSync integration
-    Reddit aggregateion. Detect saved/suggested threads from polis members and share them with the polis.
+    Reddit aggregation. Detect saved/suggested threads from polis members and share them with the polis.
     Router integration. example, 'add MAC address' to white list.
     Dynamic output capability so user can configure Aineko's language or 'tone'
     Quick notes with ability to recall last note for easy throw aways
