@@ -1,20 +1,21 @@
 import settings
 
-class Console:
+class ConsoleHandler(object):
+  
   def __init__(self):
-    self.console_prompt = settings.TEXT_ICON
-    self.input = False
+    self.console_prompt = settings.PROMPT
+    self.userInput = False
     
   def listener(self):
     self.Output(settings.INITIAL_GREETING)
     
     while True:
-      self.input = self.getInput()
+      self.userInput = self.getInput()
      
-      if (self.ExitCheck(self.input)):
+      if (self.ExitCheck(self.userInput)):
         self.Output("Goodbye.")
         break
-      elif (self.input):
+      elif (self.userInput):
         self.Output("Thanks for your input.")
         continue
       else:
@@ -22,20 +23,16 @@ class Console:
         continue
         
   def getInput(self):
-    userInput = input(self.console_prompt)
-    return userInput
+    newInput = input(self.console_prompt)
+    return newInput
      
   def Output(self, response):
     print (response)
 
-  def ExitCheck(self, userInput):
-    if (self.input == settings.COMMAND_INITIATOR + "exit"):
+  def ExitCheck(self, curInput):
+    if (curInput == settings.COMMAND_INITIATOR + "exit"):
       return True
     else:
       return False 
 
-class Core:
 
-  def __init__(self):
-    self.Console = Console()  
-    self.Console.listener()
