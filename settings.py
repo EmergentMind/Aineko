@@ -1,3 +1,5 @@
+''' Define Settings '''
+
 #General
 COMMAND_INITIATOR = "!!"
 SHUTDOWN_MSG = "I am shutting down now. Goodbye."

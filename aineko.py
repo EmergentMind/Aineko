@@ -1,10 +1,11 @@
+''' Initliaze and launch Aineko. '''
+
 import logging
-import getpass
 from optparse import OptionParser
 
-from core.xmpp import xmppHandler
-from core.console import ConsoleHandler
 from core.main import Processor
+from IOHandlers.console import ConsoleHandler
+from IOHandlers.xmpp import xmppHandler
 import settings
 
 # Setup the command line arguments.
@@ -33,45 +34,47 @@ OptionParser.add_option("-p", "--password", dest="password",
 options, args = OptionParser.parse_args()
 
 # Setup logging.
-logging.basicConfig(level = options.loglevel,
+logging.basicConfig(level=options.loglevel,
                     format='%(levelname)-8s %(message)s')
 
 
-processor = Processor()
-console = ConsoleHandler()
+Processor = Processor()
+Console = ConsoleHandler()
 xmpp = False
 
 # Start XMPP.
 if options.noXMPP is False:
-  console.messageOut("Starting XMPP client.")
-  if options.jid is None:
-    options.jid = input("JabberID: ")
-  if options.password is None:
-    options.password = getpass.getpass("Password: ")
+    Console.messageOut("Starting XMPP client.")
 
-  xmpp = xmppHandler(options.jid, options.password)
-  if xmpp.connect():
-    xmpp.process(threaded=True)
-    console.messageOut("I am signed into " + xmpp.server + " as " + options.jid)
-  else:
-    console.messageOut("I was unable to connect")
-    xmpp = False
+    if options.jid is None:
+        options.jid = Console.messageIn("JabberID including domain: ", True)
+    if options.password is None:
+        options.password = Console.passwordIn("Password: ")
+
+    xmpp = xmppHandler(options.jid, options.password)
+
+    if xmpp.connect():
+        xmpp.process(threaded=True)
+        Console.messageOut("I am signed into " + xmpp.server + " as " + options.jid)
+    else:
+        Console.messageOut("I was unable to connect")
+        xmpp = False
 
 #IO Loop.
 while True:
-  userInput = console.messageIn()
+    userInput = Console.messageIn()
 
-  if userInput is None and xmpp:
-    userInput = xmpp.messageIn()
+    if userInput is None and xmpp:
+        userInput = xmpp.messageIn()
 
-  response = processor.handleInput(userInput)
+    response = Processor.handleInput(userInput)
 
-  if response:
-    console.messageOut(response)
-    if xmpp:
-      xmpp.messageOut("tacollector@gmail.com", response)
-    
-  if processor.shutDown is True:
-    if xmpp:
-      xmpp.disconnect(wait=True)
-    break
+    if response:
+        Console.messageOut(response)
+    if xmpp and xmpp.connect():
+        xmpp.messageOut("tacollector@gmail.com", response)
+
+    if Processor.shutDown is True:
+        if xmpp:
+            xmpp.disconnect(wait=True)
+        break
