@@ -15,8 +15,11 @@ import abc
 from IOHandlers.IOBase import IOBase
 
 class xmppHandler(ClientXMPP, IOBase):
-    def __init__(self, jid, password):
+    def __init__(self, jid, password, xmppSettings):
         ClientXMPP.__init__(self, jid, password)
+
+        self.credentials['api_key'] = xmppSettings['oauth']['api_key'] 
+        self.credentials['access_token'] = xmppSettings['oauth']['access_token']
     
         # Setup and register plugins.  Order does not matter.
         self.register_plugin('xep_0030') # Service Discovery

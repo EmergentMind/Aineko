@@ -22,10 +22,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="aineko.py" />
+    <Compile Include="IOHandlers\console.py" />
     <Compile Include="IOHandlers\IOBase.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IOHandlers\console.py" />
     <Compile Include="core\main.py" />
     <Compile Include="core\test\testConsoleHandler.py" />
     <Compile Include="core\test\__init__.py" />
@@ -34,7 +34,9 @@
     <Compile Include="IOHandlers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="settings.py" />
+    <Compile Include="__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="core" />
@@ -43,6 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="default-config" />
+    <Content Include="config" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

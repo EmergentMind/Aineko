@@ -1,14 +1,16 @@
 '''
-    Interprets input, sends data for additional processing by relevant modules, then submits results for output.
+    Interprets input, sends data for additional processing by relevant modules, then
+    submits results for output.
 '''
-import settings
 
 class Processor:
-    def __init__ (self):
+    def __init__ (self, behaviourSettings):
+        self.commandInitiator = behaviourSettings['command_initiator']
+        self.shutDownMsg = behaviourSettings['shutdown_msg']
         self.shutDown = False
 
     def handleInput(self, data):  
-        if data.startswith("!!"):
+        if data.startswith(self.commandInitiator):
             commandOutput = self.parseCommand(data)
             return commandOutput
  
@@ -20,14 +22,8 @@ class Processor:
 
     #Execute commands and return the outcome
     def parseCommand(self, data):
-        if data.startswith("!!exit"):
+        if data.startswith(self.commandInitiator + "exit"):
             self.shutDown = True
-            return settings.SHUTDOWN_MSG
+            return self.shutDownMsg
         else:
             return "Your command was not recognized."
-
-class Result:
-    def __init__(self):
-        self.DataProcessed = False
-        self.Origin
-        self.Message

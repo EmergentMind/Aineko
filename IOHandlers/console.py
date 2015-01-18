@@ -1,17 +1,17 @@
-''' Handle input and outpt between aineko core and the console. '''
-
 import abc
 from IOHandlers.IOBase import IOBase
-import settings
 import getpass
 
 class ConsoleHandler(IOBase):
-    def __init__(self):
-        self.console_prompt = settings.PROMPT
-        self.messageOut(settings.INITIAL_GREETING)
-        self.messageOut(settings.PROMPT)
+    ''' Handle input and outpt between aineko core and the console. '''
+    def __init__(self, consoleSettings):
+        self.console_prompt = consoleSettings['prompt']
+        self.messageOut(consoleSettings['initial_greeting'])
+        self.messageOut(consoleSettings['prompt'])
 
     def messageIn(self, customPrompt=None, charsRequired=False):
+        ''' customPrompt - specify a custom prompt for the required input, such as 'Enter Password:'
+        '''
         userInput = ''
 
         while True:

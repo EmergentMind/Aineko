@@ -1,0 +1,20 @@
+# Defualt Configuration Settings 
+#
+# All custom configuration settings should be defined in a separate 'config' file.
+
+[behavior]
+command_initiator = "!!"
+shutdown_msg = "I am shutting down now. Goodbye."
+
+[console]
+initial_greeting = "Hello, I am Aineko."
+prompt = "=^._.^= "
+
+[xmpp]
+xmpp_server = "talk.google.com"
+xmpp_port = 5222
+xmpp_user = "" #domain is required
+xmpp_password = ""
+    [[oauth]]
+    api_key = "" 
+    access_token = ""
